@@ -11,10 +11,13 @@ GIS::Distance::MathTrig - Great cirlce distance calculations using Math::Trig.
 
 =head1 DESCRIPTION
 
-This formula uses L<Math::Trig>'s great_circle_distance function which at this time uses math almost
-exactly the same as the cos formula.  If you want to use the cos formula you may find
-that mt will calculate faster (untested assumption).  For some reason mt and cos return
-slight differences at very close distances. The mt formula has the same drawbacks as the cos formula.
+This formula uses L<Math::Trig>'s great_circle_distance function which
+at this time uses math almost exactly the same as the
+L<GIS::Distance::Cosine> formula.  If you want to use the
+L<GIS::Distance::Cosine> formula you may find that this module will
+calculate faster (untested assumption).  For some reason this and
+the Cosine formula return slight differences at very close distances.
+This formula has the same drawbacks as the Cosine formula.
 
 =head1 FORMULA
 
@@ -33,6 +36,18 @@ use base qw( GIS::Distance );
 
 use Class::Measure::Length;
 use Math::Trig qw( great_circle_distance deg2rad );
+
+=head1 METHODS
+
+=head2 distance
+
+  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
+
+This method accepts two lat/lon sets (in decimal degrees) and returns a
+L<Class::Measure::Length> object containing the distance
+between the two points.
+
+=cut
 
 sub distance {
     my($self,$lon1,$lat1,$lon2,$lat2) = @_;

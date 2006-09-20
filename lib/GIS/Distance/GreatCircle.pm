@@ -11,6 +11,17 @@ GIS::Distance::GreatCircle - Great circle distance calculations.
 
 =head1 DESCRIPTION
 
+A true Great Circle Distance calculation.  This was created
+because the L<GIS::Distance::MathTrig> calculation uses
+L<Math::Trig>'s great_circle_distance() which doesn't actually
+appear to use the actual Great Circle Distance formula.
+
+=head1 BROKEN
+
+As documented in more detail at the BUGS section of L<GIS::Distance>,
+the distances returned by this module seem to be invalid.  Don't use
+this module unless you want to help fix it.
+
 =head1 FORMULA
 
   c = 2 * asin( sqrt(
@@ -28,6 +39,18 @@ use base qw( GIS::Distance );
 
 use Class::Measure::Length;
 use Math::Trig qw( deg2rad asin );
+
+=head1 METHODS
+
+=head2 distance
+
+  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
+
+This method accepts two lat/lon sets (in decimal degrees) and returns a
+L<Class::Measure::Length> object containing the distance
+between the two points.
+
+=cut
 
 sub distance {
     my($self,$lon1,$lat1,$lon2,$lat2) = @_;

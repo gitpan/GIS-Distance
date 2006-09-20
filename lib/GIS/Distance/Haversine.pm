@@ -11,6 +11,9 @@ GIS::Distance::Haversine - Exact spherical distance calculations.
 
 =head1 DESCRIPTION
 
+This is the default distance calculation for L<GIS::Distance> as
+it keeps a good balance between speed and accuracy.
+
 =head1 FORMULA
 
   dlon = lon2 - lon1
@@ -28,6 +31,18 @@ use base qw( GIS::Distance );
 
 use Class::Measure::Length;
 use Math::Trig qw( deg2rad );
+
+=head1 METHODS
+
+=head2 distance
+
+  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
+
+This method accepts two lat/lon sets (in decimal degrees) and returns a
+L<Class::Measure::Length> object containing the distance
+between the two points.
+
+=cut
 
 sub distance {
     my($self,$lon1,$lat1,$lon2,$lat2) = @_;

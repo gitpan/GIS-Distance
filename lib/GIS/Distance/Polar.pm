@@ -11,15 +11,18 @@ GIS::Distance::Polar - Polar coordinate flat-earth distance calculations.
 
 =head1 DESCRIPTION
 
-The formula:
+Supposedly this is a formula to better calculate distances at the
+poles.
+
+While implimented, this formula has not been tested much.  If you use it 
+PLEASE share your results with the author.
+
+=head1 FORMULA
 
   a = pi/2 - lat1
   b = pi/2 - lat2
   c = sqrt( a^2 + b^2 - 2 * a * b * cos(lon2 - lon1) )
   d = R * c
-
-While implimented, this formula has not been tested much.  If you use it 
-PLEASE share your results with the author.
 
 =cut
 
@@ -30,6 +33,18 @@ use base qw( GIS::Distance );
 
 use Class::Measure::Length;
 use Math::Trig qw( deg2rad pi );
+
+=head1 METHODS
+
+=head2 distance
+
+  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
+
+This method accepts two lat/lon sets (in decimal degrees) and returns a
+L<Class::Measure::Length> object containing the distance
+between the two points.
+
+=cut
 
 sub distance {
     my($self,$lon1,$lat1,$lon2,$lat2) = @_;
