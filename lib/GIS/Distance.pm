@@ -7,9 +7,14 @@ GIS::Distance - Calculate geographic distances.
 =head1 SYNOPSIS
 
   use GIS::Distance;
+  
   my $gis = GIS::Distance->new();
+  
   $gis->formula( 'Polar' );  # Optional, default is Haversine.
+  
   my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
+  
+  print $distance->meters();
 
 =head1 DESCRIPTION
 
@@ -22,7 +27,7 @@ use Moose;
 use Moose::Util::TypeConstraints;
 use Carp qw( croak );
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 METHODS
 
@@ -72,11 +77,11 @@ then install L<GIS::Distance::Fast> and they will be automatically used.
 
 =cut
 
-subtype 'GIS-Distance-Formula'
+subtype 'GISDistanceFormula'
     => as 'Object'
     => where { $_->isa('GIS::Distance::Formula') };
 
-coerce 'GIS-Distance-Formula'
+coerce 'GISDistanceFormula'
     => from 'Str'
         => via {
             my $class = $_;
@@ -95,7 +100,7 @@ coerce 'GIS-Distance-Formula'
 
 has 'formula' => (
     is      => 'rw',
-    isa     => 'GIS-Distance-Formula',
+    isa     => 'GISDistanceFormula',
     default => 'Haversine',
     coerce  => 1,
 );
@@ -103,21 +108,27 @@ has 'formula' => (
 1;
 __END__
 
+=head1 SEE ALSO
+
+L<GIS::Distance::Fast> - C implmentation of some of the formulas
+shipped with GIS::Distance.  This greatly increases the speed at
+which distance calculations can be made.
+
 =head1 FORMULAS
 
-L<GID::Distance::Formula::Cosine>
+L<GIS::Distance::Formula::Cosine>
 
-L<GID::Distance::Formula::GeoEllipsoid>
+L<GIS::Distance::Formula::GeoEllipsoid>
 
-L<GID::Distance::Formula::GreatCircle>
+L<GIS::Distance::Formula::GreatCircle>
 
-L<GID::Distance::Formula::Haversine>
+L<GIS::Distance::Formula::Haversine>
 
-L<GID::Distance::Formula::MathTrig>
+L<GIS::Distance::Formula::MathTrig>
 
-L<GID::Distance::Formula::Polar>
+L<GIS::Distance::Formula::Polar>
 
-L<GID::Distance::Formula::Vincenty>
+L<GIS::Distance::Formula::Vincenty>
 
 =head1 TODO
 
@@ -142,8 +153,25 @@ very useful info is at L<http://en.wikipedia.org/wiki/Geoid>.
 
 =head1 BUGS
 
-Both the L<GIS::Distance::Formula::GreatCircle> and L<GIS::Distance::Formuka::Polar> formulas are
+Both the L<GIS::Distance::Formula::GreatCircle> and L<GIS::Distance::Formula::Polar> formulas are
 broken.  Read their respective man pages for details.
+
+=head1 TEST COVERAGE
+
+  ---------------------------- ------ ------ ------ ------ ------ ------ ------
+  File                           stmt   bran   cond    sub    pod   time  total
+  ---------------------------- ------ ------ ------ ------ ------ ------ ------
+  blib/lib/GIS/Distance.pm      100.0    n/a    n/a  100.0  100.0   24.0  100.0
+  ...b/GIS/Distance/Formula.pm   75.0    n/a    n/a   66.7  100.0    1.9   75.0
+  ...istance/Formula/Cosine.pm  100.0    n/a    n/a  100.0  100.0    5.9  100.0
+  ...e/Formula/GeoEllipsoid.pm  100.0    n/a    n/a  100.0  100.0    3.6  100.0
+  ...ce/Formula/GreatCircle.pm  100.0    n/a    n/a  100.0  100.0    5.9  100.0
+  ...ance/Formula/Haversine.pm  100.0    n/a    n/a  100.0  100.0    9.1  100.0
+  ...tance/Formula/MathTrig.pm  100.0    n/a    n/a  100.0  100.0    2.4  100.0
+  ...Distance/Formula/Polar.pm  100.0    n/a    n/a  100.0  100.0    2.7  100.0
+  ...tance/Formula/Vincenty.pm  100.0   50.0   50.0  100.0  100.0   44.6   93.1
+  Total                          98.8   50.0   50.0   97.2  100.0  100.0   96.7
+  ---------------------------- ------ ------ ------ ------ ------ ------ ------
 
 =head1 AUTHOR
 
