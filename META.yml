@@ -4,7 +4,7 @@ author:
   - 'Aran Clary Deltac <bluefeet@cpan.org>'
 build_requires:
   ExtUtils::MakeMaker: 6.42
-  Test::More: 0.62
+  Test::More: 0.94
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
@@ -19,14 +19,15 @@ no_index:
     - inc
     - t
 recommends:
-  GIS::Distance::Fast: 0
+  GIS::Distance::Fast: 0.04
   Geo::Ellipsoid: 0.902
-  Test::Pod: 1.22
 requires:
   Class::Measure: 0
   Math::Complex: 0
   Moose: 0.39
   perl: 5.8.3
 resources:
+  homepage: http://github.com/bluefeet/gis-distance/tree
   license: http://dev.perl.org/licenses/
-version: 0.04
+  repository: git://github.com/bluefeet/gis-distance.git
+version: 0.06
