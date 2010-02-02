@@ -9,14 +9,16 @@ all_from 'lib/GIS/Distance.pm';
 readme_from 'lib/GIS/Distance.pm';
 githubmeta;
 
-requires 'Moose' => 0.39;
+requires 'Any::Moose' => 0.11;
+requires 'Mouse' => 0.49;
 requires 'Class::Measure';
 requires 'Math::Complex';
+requires 'namespace::autoclean';
 
 test_requires 'Test::More' => 0.94;
 
 recommends 'Geo::Ellipsoid' => 0.902;
-recommends 'GIS::Distance::Fast' => 0.04;
+recommends 'GIS::Distance::Fast' => 0.06;
 
 WriteAll;
 

@@ -23,13 +23,13 @@ distances between geographic points, and anything that can be derived from that.
 
 =cut
 
-use Moose;
+use Any::Moose;
 use namespace::autoclean;
 
-use Moose::Util::TypeConstraints;
+use Any::Moose '::Util::TypeConstraints';
 use Carp qw( croak );
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 =head1 METHODS
 

@@ -1,5 +1,9 @@
 Revision history for Perl extension GIS::Distance.
 
+0.07 : 2010-02-02
+ - Use Any::Moose instead of Moose directly.
+ - Declare namespace::autoclean dependency.
+
 0.06 : 2010-01-30
  - Minor build updates to include some extra info (github, etc).
 

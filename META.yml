@@ -19,15 +19,17 @@ no_index:
     - inc
     - t
 recommends:
-  GIS::Distance::Fast: 0.04
+  GIS::Distance::Fast: 0.06
   Geo::Ellipsoid: 0.902
 requires:
+  Any::Moose: 0.11
   Class::Measure: 0
   Math::Complex: 0
-  Moose: 0.39
+  Mouse: 0.49
+  namespace::autoclean: 0
   perl: 5.8.3
 resources:
   homepage: http://github.com/bluefeet/gis-distance/tree
   license: http://dev.perl.org/licenses/
   repository: git://github.com/bluefeet/gis-distance.git
-version: 0.06
+version: 0.07
