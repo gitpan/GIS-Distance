@@ -1,4 +1,7 @@
 package GIS::Distance::Formula;
+{
+  $GIS::Distance::Formula::VERSION = '0.08';
+}
 
 =head1 NAME
 

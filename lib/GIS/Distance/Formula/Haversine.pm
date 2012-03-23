@@ -1,4 +1,7 @@
 package GIS::Distance::Formula::Haversine;
+{
+  $GIS::Distance::Formula::Haversine::VERSION = '0.08';
+}
 
 =head1 NAME
 

@@ -1,4 +1,7 @@
 package GIS::Distance::Formula::Vincenty;
+{
+  $GIS::Distance::Formula::Vincenty::VERSION = '0.08';
+}
 
 =head1 NAME
 

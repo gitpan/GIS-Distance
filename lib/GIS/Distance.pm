@@ -1,4 +1,7 @@
 package GIS::Distance;
+{
+  $GIS::Distance::VERSION = '0.08';
+}
 
 =head1 NAME
 
@@ -28,8 +31,6 @@ use namespace::autoclean;
 
 use Any::Moose '::Util::TypeConstraints';
 use Carp qw( croak );
-
-our $VERSION = '0.07';
 
 =head1 METHODS
 

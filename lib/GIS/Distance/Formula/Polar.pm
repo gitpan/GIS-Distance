@@ -1,4 +1,7 @@
 package GIS::Distance::Formula::Polar;
+{
+  $GIS::Distance::Formula::Polar::VERSION = '0.08';
+}
 
 =head1 NAME
 

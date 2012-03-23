@@ -1,4 +1,7 @@
 package GIS::Distance::Formula::GeoEllipsoid;
+{
+  $GIS::Distance::Formula::GeoEllipsoid::VERSION = '0.08';
+}
 
 =head1 NAME
 

@@ -1,4 +1,7 @@
 package GIS::Distance::Formula::MathTrig;
+{
+  $GIS::Distance::Formula::MathTrig::VERSION = '0.08';
+}
 
 =head1 NAME
 
